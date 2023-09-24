@@ -337,6 +337,7 @@ while(not exit):
                  "ResNet50 Fully Connected (FC) Layer Feature Descriptors are ", data[str(input_image_id)]['fc'], "\n")
             
     elif (menu_choice == 2):
+        data = {}
         # Computing the feature descriptors and storing them in the JSON file
         for image_id in range(len(dataset)):
             img, label = dataset[image_id]
@@ -349,7 +350,8 @@ while(not exit):
             colorMomentFD = computeColorMoments(image_id, dataset)
             HOGFeatureDescriptors = computeHOG(image_id, dataset)
             RsNet_output_vectors = computeResNet50Vectors(image_id, dataset)
-            data = {}
+            
+            #Storing data in JSON file
             data[str(image_id)] = {
                 'colourMoments': colorMomentFD.tolist(), 
                 'HOG':    HOGFeatureDescriptors.tolist(),        
